@@ -18,11 +18,11 @@
   --brand: #1d4ed8;     /* 고른 것 · 링크 · 주요 단추 */
 
   /* 상태 — 재대본 단계와 같은 순서: 평상 → 준비 → 주의 → 경계 → 심각 */
-  --ok: #12805c;   --okbg: #ecf8f2;
+  --ok: #077552;   --okbg: #ecf8f2;
   --blue: #2563eb;
-  --amb: #926000;  --amb-fill: #e0930a;
+  --amb: #a16207;  --amb-fill: #e0930a;
   --warn: #b54708; --warnbg: #fff4e6; --warn-fill: #e8590c;
-  --sev: #d92d20;  --sevbg: #fef0ef;
+  --sev: #c4202b;  --sevbg: #fef0ef;
 
   /* 글꼴 · 모서리 · 움직임 */
   --font: 'Pretendard Variable', Pretendard, 'Malgun Gothic', system-ui, sans-serif;
