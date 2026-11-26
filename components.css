@@ -77,6 +77,11 @@
 .tag.ok { background: var(--ok-fill); } .tag.ready { background: var(--blue-fill); } .tag.caution { background: var(--amb-fill); }
 .tag.alert { background: var(--warn-fill); } .tag.severe { background: var(--sev-fill); }
 
+/* ── 단계 점 ── 작은 단계 글자 앞에 그림용 색 동그라미. 글자는 검정 */
+.lv { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; color: var(--ink); }
+.lv::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--c, var(--ink3)); flex: none; }
+.lv.ok { --c: var(--ok-fill); } .lv.ready { --c: var(--blue-fill); } .lv.caution { --c: var(--amb-fill); } .lv.alert { --c: var(--warn-fill); } .lv.severe { --c: var(--sev-fill); }
+
 /* ── 빈 상태 ── 자료가 없을 때도 칸을 비워 두지 않고 이유를 적는다 */
 .empty { padding: 14px 16px; color: var(--ink3); font-size: 13.5px; }
 

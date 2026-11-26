@@ -18,7 +18,7 @@
   <nav class="toc" aria-label="이 쪽 차례">
     <a href="#card">카드</a><a href="#btn">단추</a><a href="#ib">도구 단추</a><a href="#seg">고르기 묶음</a><a href="#tabs">탭</a>
     <a href="#ref">요약 카드</a><a href="#mc">측정 칸</a><a href="#chip">관서 칩</a><a href="#al">알림 줄</a><a href="#band">상태 띠</a>
-    <a href="#tag">이름표</a><a href="#tbl">표</a><a href="#modal">팝업</a><a href="#empty">빈 상태</a>
+    <a href="#lv">단계 점</a><a href="#tag">이름표</a><a href="#tbl">표</a><a href="#modal">팝업</a><a href="#empty">빈 상태</a>
   </nav>
 
   <h2 id="card">카드</h2>
@@ -80,7 +80,7 @@
   <p>이름 · 큰 숫자 · 작은 단위입니다. 함께 보면 좋은 값(순간풍속 · 실효습도)은 제목 줄 오른쪽에 작게 둡니다. 기준을 넘으면 그 값만 상태색으로 바꿉니다.</p>
   <div class="demo"><div class="show">
     <div style="display:grid;grid-template-columns:repeat(3,150px);gap:8px">
-      <div class="mc"><span>습도<i style="color:var(--warn);font-weight:800">실효 32%</i></span><b>41<small>%</small></b></div>
+      <div class="mc"><span>습도<i class="lv alert">실효 32%</i></span><b>41<small>%</small></b></div>
       <div class="mc"><span>풍속<i>순간 9.5</i></span><b>4.3<small>m/s</small></b></div>
       <div class="mc"><span>풍향</span><b>북서 ↘</b></div>
     </div>
@@ -114,6 +114,12 @@
     <div class="band severe"><i class="st" aria-hidden="true"></i><div><b>심각 · 재대본 비상 3단계</b><br><span>재대본 발령</span></div></div>
   </div><pre>&lt;div class="band caution"&gt;&lt;i class="st"&gt;&lt;/i&gt;&lt;div&gt;&lt;b&gt;주의&lt;/b&gt;&lt;br&gt;&lt;span&gt;근거&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;!-- 단계: (없음)=평상 · ready · caution · alert · severe --&gt;</pre></div>
+
+  <h2 id="lv">단계 점</h2>
+  <p>목록 · 칸 · 값처럼 작은 글자로 단계를 말할 때 씁니다. 글자는 검정, 앞의 점이 막대 · 이름표와 같은 그림용 색입니다. 글자용 노랑 · 주황은 막대 색과 달라 보여서 작은 글자에는 색을 칠하지 않습니다.</p>
+  <div class="demo"><div class="show">
+    <span class="lv ok">낮음 48</span><span class="lv ready">관심</span><span class="lv caution">다소높음 64</span><span class="lv alert">높음 72</span><span class="lv severe">매우높음 88</span>
+  </div><pre>&lt;span class="lv caution"&gt;다소높음 64&lt;/span&gt;   &lt;!-- ok · ready · caution · alert · severe --&gt;</pre></div>
 
   <h2 id="tag">이름표</h2>
   <p>표 · 목록 안에서 단계를 짧게 말합니다. 다섯 단계 모두 <b>밝은 그림용 색 바탕에 검은 글자</b>입니다. 상태색을 진하게 칠하고 흰 글자를 얹으면 단계마다 밝기가 들쭉날쭉해 보이고, 노랑은 갈색이 됩니다.</p>

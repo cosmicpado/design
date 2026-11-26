@@ -45,12 +45,12 @@
   </div></div>
 
   <h2 id="level">단계 표시</h2>
-  <p>기준을 넘으면 <b>그 값만</b> 상태색으로 바꾸고, 평소에는 보조 글자색으로 둡니다. 모든 값이 늘 색을 띠면 정작 위험할 때 눈에 띄지 않습니다.</p>
+  <p>기준을 넘으면 <b>그 값만</b> 단계를 표시하고, 평소에는 보조 글자색으로 둡니다. 모든 값이 늘 색을 띠면 정작 위험할 때 눈에 띄지 않습니다. 작은 글자는 색을 칠하지 않고 앞에 단계 점을 붙입니다.</p>
   <div class="demo"><div class="show">
-    <div class="mc" style="width:160px"><span>습도<i>실효 42%</i></span><b>49<small>%</small></b></div>
-    <div class="mc" style="width:160px"><span>습도<i style="color:var(--warn);font-weight:800">실효 32%</i></span><b>36<small>%</small></b></div>
-    <div class="mc" style="width:160px"><span>습도<i style="color:var(--sev);font-weight:800">실효 24%</i></span><b>28<small>%</small></b></div>
-  </div><pre>평소: 보조 글자 → 주의 기준(35% 이하): 주황 굵게 → 경보 기준(25% 이하): 빨강 굵게
+    <div class="mc" style="width:170px"><span>습도<i>실효 42%</i></span><b>49<small>%</small></b></div>
+    <div class="mc" style="width:170px"><span>습도<i class="lv alert">실효 32%</i></span><b>36<small>%</small></b></div>
+    <div class="mc" style="width:170px"><span>습도<i class="lv severe">실효 24%</i></span><b>28<small>%</small></b></div>
+  </div><pre>평소: 보조 글자 → 주의 기준(35% 이하): 주황 점 + 검은 굵은 글자 → 경보 기준(25% 이하): 빨강 점 + 검은 굵은 글자
 기준 숫자는 마우스를 올리면 보이게(title) 적어 둔다</pre></div>
 
   <h2 id="group">여러 곳 요약</h2>
