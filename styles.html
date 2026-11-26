@@ -34,20 +34,23 @@
   </div>
 
   <h2 id="status">상태색</h2>
-  <p>재대본 비상단계와 같은 순서로 다섯 가지입니다. 특보·하천·산불·미세먼지 모두 이 순서를 따릅니다. 밝은 화면에서도 흰 바탕 글자 대비가 4.5:1 이상이라 글자에 그대로 써도 됩니다.</p>
+  <p>재대본 비상단계와 같은 순서로 다섯 가지입니다. 특보·하천·산불·미세먼지 모두 이 순서를 따릅니다.
+    다섯 색은 <b>밝기를 맞추고, 단계가 오를수록 조금씩 선명하게</b> 잡았습니다. 그래서 한 묶음으로 보이면서 높은 단계일수록 눈에 띕니다.
+    색마다 <b>글자용</b>(진하게 · 흰 바탕 대비 4.5:1 이상)과 <b>그림용</b>(밝게 · 이름표·막대·점)이 짝으로 있습니다.</p>
   <table class="scale">
-    <tr><th>단계</th><th>이름표</th><th>글자</th><th>흰 바탕 대비</th><th>쓰는 곳</th></tr>
-    <tr><td>평상</td><td><span class="tag ok">평상</span></td><td style="color:var(--ok);font-weight:800">모두 정상</td><td>5.14 : 1</td><td>특보 없음 · 하천 정상 · 미세먼지 좋음</td></tr>
-    <tr><td>준비</td><td><span class="tag ready">준비</span></td><td style="color:var(--blue);font-weight:800">예비특보</td><td>5.17 : 1</td><td>예비특보 · 하천 관심</td></tr>
-    <tr><td>주의</td><td><span class="tag caution">주의</span></td><td style="color:var(--amb);font-weight:800">주의보</td><td>4.92 : 1</td><td>주의보 · 하천 주의 · 건조주의보 기준</td></tr>
-    <tr><td>경계</td><td><span class="tag alert">경계</span></td><td style="color:var(--warn);font-weight:800">경보</td><td>5.43 : 1</td><td>경보 · 하천 경계 · 산불 다소높음</td></tr>
-    <tr><td>심각</td><td><span class="tag severe">심각</span></td><td style="color:var(--sev);font-weight:800">위험</td><td>5.09 : 1</td><td>중대 경보 · 하천 심각 · 건조경보 기준</td></tr>
+    <tr><th>단계</th><th>이름표</th><th>글자</th><th>막대</th><th>글자 대비</th><th>쓰는 곳</th></tr>
+    <tr><td>평상</td><td><span class="tag ok">평상</span></td><td style="color:var(--ok);font-weight:800">모두 정상</td><td><i style="display:block;width:90px;height:9px;border-radius:6px;background:var(--ok-fill)"></i></td><td>4.94 : 1</td><td>특보 없음 · 하천 정상 · 미세먼지 좋음</td></tr>
+    <tr><td>준비</td><td><span class="tag ready">준비</span></td><td style="color:var(--blue);font-weight:800">예비특보</td><td><i style="display:block;width:90px;height:9px;border-radius:6px;background:var(--blue-fill)"></i></td><td>5.20 : 1</td><td>예비특보 · 하천 관심</td></tr>
+    <tr><td>주의</td><td><span class="tag caution">주의</span></td><td style="color:var(--amb);font-weight:800">주의보</td><td><i style="display:block;width:90px;height:9px;border-radius:6px;background:var(--amb-fill)"></i></td><td>5.29 : 1</td><td>주의보 · 하천 주의 · 건조주의보 기준</td></tr>
+    <tr><td>경계</td><td><span class="tag alert">경계</span></td><td style="color:var(--warn);font-weight:800">경보</td><td><i style="display:block;width:90px;height:9px;border-radius:6px;background:var(--warn-fill)"></i></td><td>5.58 : 1</td><td>경보 · 하천 경계 · 산불 높음</td></tr>
+    <tr><td>심각</td><td><span class="tag severe">심각</span></td><td style="color:var(--sev);font-weight:800">위험</td><td><i style="display:block;width:90px;height:9px;border-radius:6px;background:var(--sev-fill)"></i></td><td>6.04 : 1</td><td>중대 경보 · 하천 심각 · 건조경보 기준</td></tr>
   </table>
   <ul class="rules">
     <li class="do">단계는 <b>색 + 글자</b>로 함께 보입니다. 색을 못 보는 사람도 글자로 압니다.</li>
+    <li class="do"><b>글자는 진하게, 그림은 밝게.</b> 글자에는 글자용(<code>--ok</code> … <code>--sev</code>), 이름표·막대·점·동그라미에는 그림용(<code>--ok-fill</code> … <code>--sev-fill</code>)을 씁니다. 그림은 대비 3:1이면 됩니다.</li>
+    <li class="do">그림용 색 위의 글자는 <b>검정</b>(<code>--on-fill</code>)입니다. 다섯 단계 모두 같습니다.</li>
     <li class="dont">상태색을 꾸밈으로 쓰지 않습니다. 빨강은 언제나 '위험'입니다.</li>
-    <li class="do"><b>글자는 진하게, 그림은 밝게.</b> 노랑·주황은 글자용(<code>--amb</code> · <code>--warn</code>)과 그림용(<code>--amb-fill</code> · <code>--warn-fill</code>)이 따로 있습니다. 노랑 이름표는 밝은 노랑 바탕에 검은 글자입니다.</li>
-    <li class="dont">밝은 화면에서 #e0930a 같은 밝은 노랑을 글자에 쓰지 않습니다(대비 2.5:1). 동그라미·막대·바탕처럼 글자가 아닌 곳에는 그림용 밝은 색(<code>--amb-fill</code> · <code>--warn-fill</code>)을 씁니다. 그림은 대비 3:1이면 되고, 진한 글자색을 그림에 쓰면 탁해 보입니다.</li>
+    <li class="dont">진한 글자용 색을 바탕에 칠하고 흰 글자를 얹지 않습니다. 단계마다 밝기가 들쭉날쭉해지고 노랑은 갈색이 됩니다.</li>
   </ul>
 
   <h2 id="wall">벽 화면 색</h2>

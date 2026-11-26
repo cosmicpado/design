@@ -2,8 +2,10 @@
    충북소방 기상정보통합플랫폼(종합 현황·재해별 집중 감시)에서 실제로 쓰는 값을 옮겼다.
    다른 화면에서 쓸 때는 이 파일을 그대로 불러와 var(--이름) 으로 쓴다.
    · 밝은 화면이 기본, <html data-theme="dark"> 이면 어두운 화면
-   · 상태색(ok·blue·amb·warn·sev)은 흰 바탕 글자 대비 4.5:1 이상(WCAG AA) — 글자에 그대로 써도 된다
-   · 노랑·주황은 그림용(-fill)이 따로 있다 — 동그라미·막대·바탕은 밝은 색이 보기 좋고, 그림은 3:1 이면 된다 */
+   · 상태색 다섯 단계는 밝기를 맞추고, 단계가 오를수록 조금씩 선명하게 잡았다(OKLCH 선명함 글자 0.10→0.175, 그림 0.11→0.20)
+     — 다섯 색이 한 묶음으로 보이고, 높은 단계가 더 눈에 띈다
+   · 글자용(ok·blue·amb·warn·sev): 흰 바탕 대비 4.9~6.0:1(WCAG AA)
+   · 그림용(-fill): 이름표·막대·점·동그라미. 밝은 색 위에 검은 글자(대비 5.7~9.0:1). 흰 글자를 얹지 않는다 */
 :root {
   /* 바탕 · 글자 */
   --bg: #f3f5f9;        /* 화면 바탕 */
@@ -18,11 +20,12 @@
   --brand: #1d4ed8;     /* 고른 것 · 링크 · 주요 단추 */
 
   /* 상태 — 재대본 단계와 같은 순서: 평상 → 준비 → 주의 → 경계 → 심각 */
-  --ok: #077552;   --okbg: #ecf8f2;
-  --blue: #2563eb;
-  --amb: #a16207;  --amb-fill: #e0930a;
-  --warn: #b54708; --warnbg: #fff4e6; --warn-fill: #e8590c;
-  --sev: #c4202b;  --sevbg: #fef0ef;
+  --ok: #307e57;   --ok-fill: #73ca99;   --okbg: #ecf8f2;
+  --blue: #3e6db2; --blue-fill: #7baffc;
+  --amb: #966000;  --amb-fill: #e79c27;
+  --warn: #ac4b00; --warn-fill: #f77e35; --warnbg: #fff4e6;
+  --sev: #b82f2b;  --sev-fill: #fc5950;  --sevbg: #fef0ef;
+  --on-fill: #101828;   /* 그림용 색 위 글자 */
 
   /* 글꼴 · 모서리 · 움직임 */
   --font: 'Pretendard Variable', Pretendard, 'Malgun Gothic', system-ui, sans-serif;
@@ -45,11 +48,12 @@
   --ink2: #9fb0cf;
   --ink3: #8a9ab8;
   --brand: #4b8bf5;
-  --ok: #34d399;   --okbg: rgba(52, 211, 153, .12);
-  --blue: #60a5fa;
+  --ok: #34d399;   --ok-fill: #34d399;   --okbg: rgba(52, 211, 153, .12);
+  --blue: #60a5fa; --blue-fill: #60a5fa;
   --amb: #fbbf24;  --amb-fill: #fbbf24;
-  --warn: #fb923c; --warnbg: rgba(251, 146, 60, .13); --warn-fill: #fb923c;
-  --sev: #f87171;  --sevbg: rgba(248, 113, 113, .14);
+  --warn: #fb923c; --warn-fill: #fb923c; --warnbg: rgba(251, 146, 60, .13);
+  --sev: #f87171;  --sev-fill: #f87171;  --sevbg: rgba(248, 113, 113, .14);
+  --on-fill: #0b1220;
   --shadow-pop: 0 8px 26px -10px rgba(0, 0, 0, .6);
 }
 
