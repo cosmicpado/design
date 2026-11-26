@@ -71,11 +71,11 @@
 .band b { font-size: 20px; font-weight: 800; color: var(--bt); }
 .band span { font-size: 14px; color: var(--ink2); }
 
-/* ── 이름표 ── 밝은 그림용 상태색 바탕 + 검은 글자(다섯 단계 모두 같은 방식). 단계 없음은 회색 바탕 + 흰 글자 */
+/* ── 이름표 ── 그림용 상태색 바탕 + 검은 글자. 심각(진한 빨강)만 흰 글자. 단계 없음은 회색 바탕 + 흰 글자 */
 .tag { display: inline-block; font-size: 13.5px; font-weight: 800; color: #fff; border-radius: 6px; padding: 2px 8px; background: var(--ink3); }
 .tag.ok, .tag.ready, .tag.caution, .tag.alert, .tag.severe { color: var(--on-fill); }
 .tag.ok { background: var(--ok-fill); } .tag.ready { background: var(--blue-fill); } .tag.caution { background: var(--amb-fill); }
-.tag.alert { background: var(--warn-fill); } .tag.severe { background: var(--sev-fill); }
+.tag.alert { background: var(--warn-fill); } .tag.severe { background: var(--sev-fill); color: var(--on-sev); }
 
 /* ── 단계 점 ── 작은 단계 글자 앞에 그림용 색 동그라미. 글자는 검정 */
 .lv { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; color: var(--ink); }
