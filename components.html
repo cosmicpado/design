@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>컴포넌트 · cosmicpado 디자인 시스템</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🚒%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="fonts/pretendard.css">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="site.css">
+<script src="site.js"></script>
+</head>
+<body>
+<main>
+  <h1>컴포넌트</h1>
+  <p class="lead">플랫폼 화면에서 쓰는 부품입니다. 모양은 <code>components.css</code>에 있고, 이름(class)은 플랫폼과 같습니다.</p>
+  <nav class="toc" aria-label="이 쪽 차례">
+    <a href="#card">카드</a><a href="#btn">단추</a><a href="#ib">도구 단추</a><a href="#seg">고르기 묶음</a><a href="#tabs">탭</a>
+    <a href="#ref">요약 카드</a><a href="#mc">측정 칸</a><a href="#chip">관서 칩</a><a href="#al">알림 줄</a><a href="#band">상태 띠</a>
+    <a href="#tag">이름표</a><a href="#tbl">표</a><a href="#modal">팝업</a><a href="#empty">빈 상태</a>
+  </nav>
+
+  <h2 id="card">카드</h2>
+  <p>내용 묶음 하나는 카드 하나입니다. 제목 줄 왼쪽에 이름, 오른쪽에 '언제 · 어디' 값을 적습니다.</p>
+  <div class="demo"><div class="show">
+    <div class="card" style="width:340px"><div class="ch"><h3>청주동부 현재 실황</h3><span>14:38 관측</span></div>
+      <div class="body" style="font-size:14px;color:var(--ink2)">카드 내용이 여기에 들어갑니다.</div></div>
+  </div><pre>&lt;div class="card"&gt;
+  &lt;div class="ch"&gt;&lt;h3&gt;청주동부 현재 실황&lt;/h3&gt;&lt;span&gt;14:38 관측&lt;/span&gt;&lt;/div&gt;
+  &lt;div class="body"&gt;…&lt;/div&gt;
+&lt;/div&gt;</pre></div>
+
+  <h2 id="btn">단추</h2>
+  <p>기본은 흰 단추입니다. 한 화면에서 가장 중요한 동작 하나만 파란 단추(<code>.pri</code>)로 둡니다. 단추 이름은 하는 일을 적습니다.</p>
+  <div class="demo"><div class="show">
+    <button class="btn" type="button">⟳ 새로고침</button>
+    <button class="btn" type="button">windy.com 열기 ↗</button>
+    <button class="btn pri" type="button">저장</button>
+    <button class="btn" type="button" disabled>보내는 중…</button>
+  </div><pre>&lt;button class="btn" type="button"&gt;새로고침&lt;/button&gt;
+&lt;button class="btn pri" type="button"&gt;저장&lt;/button&gt;</pre></div>
+
+  <h2 id="ib">도구 단추</h2>
+  <p>윗줄 오른쪽의 그림 단추(공지 · 의견 · 알림 · 화면 색)입니다. 글자가 없으니 <code>aria-label</code>로 이름을 꼭 붙입니다. 안 본 것이 있으면 빨간 점을 붙입니다.</p>
+  <div class="demo"><div class="show">
+    <button class="ib" type="button" aria-label="공지사항">📢<span class="dot"></span></button>
+    <button class="ib" type="button" aria-label="의견 보내기">💬</button>
+    <button class="ib" type="button" aria-label="알림 설정">🔔</button>
+    <button class="ib" type="button" aria-label="화면 색">☾</button>
+  </div><pre>&lt;button class="ib" type="button" aria-label="공지사항"&gt;📢&lt;span class="dot"&gt;&lt;/span&gt;&lt;/button&gt;</pre></div>
+
+  <h2 id="seg">고르기 묶음</h2>
+  <p>둘 이상 중 하나를 고를 때 씁니다(볼 범위 · 화면 전환 · 지도 층). 회색 묶음 안에서 고른 칸만 흰 바탕 · 파란 글자입니다.</p>
+  <div class="demo"><div class="show">
+    <div class="seg" data-pick role="group" aria-label="볼 범위"><button type="button">충북 전체</button><button type="button" class="on">관서 청주동부</button></div>
+    <div class="seg" data-pick role="group" aria-label="보기"><button type="button" class="on">적설</button><button type="button">최저기온</button><button type="button">체감</button></div>
+  </div><pre>&lt;div class="seg" role="group" aria-label="볼 범위"&gt;
+  &lt;button type="button"&gt;충북 전체&lt;/button&gt;&lt;button type="button" class="on"&gt;관서 청주동부&lt;/button&gt;
+&lt;/div&gt;</pre></div>
+
+  <h2 id="tabs">탭</h2>
+  <p>카드 안에서 내용을 바꿔 볼 때 씁니다. 고른 탭만 파란 글자와 밑줄입니다.</p>
+  <div class="demo"><div class="show col">
+    <div class="card"><div class="tabs" data-pick><button type="button" class="on">한눈 요약</button><button type="button">하천</button><button type="button">댐</button><button type="button">산불</button><button type="button">미세먼지</button><button type="button">날씨 해설</button></div>
+      <div class="body" style="font-size:14px;color:var(--ink2)">탭 내용</div></div>
+  </div></div>
+
+  <h2 id="ref">요약 카드</h2>
+  <p>한눈에 '괜찮은지'를 알려 주는 카드입니다. 작은 제목 → 상태색 큰 글자 → 근거 두 줄 순서입니다. 누르면 자세한 탭으로 갑니다.</p>
+  <div class="demo"><div class="show">
+    <div class="ref" tabindex="0" role="button" style="width:230px"><h4>🌊 관할 하천</h4><b style="color:var(--ok)">모두 정상</b><p>수위가 가장 높은 곳<br>감천 청석굴교 · 경계수위의 40%</p></div>
+    <div class="ref" tabindex="0" role="button" style="width:230px"><h4>💧 충북 영향 댐</h4><b style="color:var(--warn)">1곳 방류 급증</b><p>충주댐 방류 2,400㎥/s</p></div>
+    <div class="ref" tabindex="0" role="button" style="width:230px"><h4>🛸 소방드론 · 청주동부</h4><b style="color:var(--sev)">비행 제한</b><p>풍속 12.1m/s — 10m/s 이상</p></div>
+  </div><pre>&lt;div class="ref" tabindex="0" role="button"&gt;
+  &lt;h4&gt;🌊 관할 하천&lt;/h4&gt;&lt;b style="color:var(--ok)"&gt;모두 정상&lt;/b&gt;&lt;p&gt;…&lt;/p&gt;
+&lt;/div&gt;</pre></div>
+
+  <h2 id="mc">측정 칸</h2>
+  <p>이름 · 큰 숫자 · 작은 단위입니다. 함께 보면 좋은 값(순간풍속 · 실효습도)은 제목 줄 오른쪽에 작게 둡니다. 기준을 넘으면 그 값만 상태색으로 바꿉니다.</p>
+  <div class="demo"><div class="show">
+    <div style="display:grid;grid-template-columns:repeat(3,150px);gap:8px">
+      <div class="mc"><span>습도<i style="color:var(--warn);font-weight:800">실효 32%</i></span><b>41<small>%</small></b></div>
+      <div class="mc"><span>풍속<i>순간 9.5</i></span><b>4.3<small>m/s</small></b></div>
+      <div class="mc"><span>풍향</span><b>북서 ↘</b></div>
+    </div>
+  </div><pre>&lt;div class="mc"&gt;&lt;span&gt;습도&lt;i&gt;실효 32%&lt;/i&gt;&lt;/span&gt;&lt;b&gt;41&lt;small&gt;%&lt;/small&gt;&lt;/b&gt;&lt;/div&gt;</pre></div>
+
+  <h2 id="chip">관서 칩</h2>
+  <p>여러 관서를 나란히 비교할 때 씁니다. 내 관서는 연한 파랑으로 표시합니다. 순서는 늘 충북 관서 순서입니다.</p>
+  <div class="demo"><div class="show">
+    <div class="chip me" style="width:120px"><div class="n">청주동부</div><div class="v"><b>3.3°</b></div></div>
+    <div class="chip" style="width:120px"><div class="n">청주서부</div><div class="v"><b>2.3°</b></div></div>
+    <div class="chip" style="width:120px"><div class="n">충주</div><div class="v"><b>2.2°</b></div></div>
+    <div class="chip" style="width:120px"><div class="n">제천</div><div class="v"><b>0.8°</b></div></div>
+  </div></div>
+
+  <h2 id="al">알림 줄</h2>
+  <p>특보 · 재난문자처럼 '지금 알아야 할 것'입니다. 연한 상태색 바탕에 상태색 제목을 씁니다. 왼쪽 색 띠는 쓰지 않습니다.</p>
+  <div class="demo"><div class="show col">
+    <div class="al"><b>호우주의보</b><p>청주 · 증평 · 진천 — 11.26 14:00 발효</p></div>
+    <div class="al sev"><b>호우경보</b><p>제천 · 단양 — 11.26 16:00 발효</p></div>
+    <div class="al ok"><b>✓ 기상특보 · 재난문자 없음</b></div>
+  </div><pre>&lt;div class="al"&gt;&lt;b&gt;호우주의보&lt;/b&gt;&lt;p&gt;…&lt;/p&gt;&lt;/div&gt;
+&lt;div class="al sev"&gt;…&lt;/div&gt;   &lt;!-- 경보 --&gt;</pre></div>
+
+  <h2 id="band">상태 띠</h2>
+  <p>화면 맨 위에서 '지금 몇 단계인지'를 말합니다. 단계색을 바탕에 9%, 테두리에 35% 섞어 씁니다. 단계 이름과 근거를 꼭 함께 적습니다.</p>
+  <div class="demo"><div class="show col">
+    <div class="band"><i class="st" aria-hidden="true"></i><div><b>평상</b><br><span>특보 없음</span></div></div>
+    <div class="band ready"><i class="st" aria-hidden="true"></i><div><b>준비</b><br><span>호우 예비특보 3개 시·군 — 재대본 준비 단계</span></div></div>
+    <div class="band caution"><i class="st" aria-hidden="true"></i><div><b>주의 · 재대본 비상 1단계</b><br><span>호우주의보 3개 시·군</span></div></div>
+    <div class="band alert"><i class="st" aria-hidden="true"></i><div><b>경계 · 재대본 비상 2단계</b><br><span>호우경보 3개 시·군</span></div></div>
+    <div class="band severe"><i class="st" aria-hidden="true"></i><div><b>심각 · 재대본 비상 3단계</b><br><span>재대본 발령</span></div></div>
+  </div><pre>&lt;div class="band caution"&gt;&lt;i class="st"&gt;&lt;/i&gt;&lt;div&gt;&lt;b&gt;주의&lt;/b&gt;&lt;br&gt;&lt;span&gt;근거&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;!-- 단계: (없음)=평상 · ready · caution · alert · severe --&gt;</pre></div>
+
+  <h2 id="tag">이름표</h2>
+  <p>표 · 목록 안에서 단계를 짧게 말합니다. 상태색 바탕에 흰 글자입니다.</p>
+  <div class="demo"><div class="show">
+    <span class="tag ok">정상</span><span class="tag ready">관심</span><span class="tag caution">주의</span><span class="tag alert">경계</span><span class="tag severe">심각</span><span class="tag">자료 없음</span>
+  </div></div>
+
+  <h2 id="tbl">표</h2>
+  <p>머리줄은 보조 글자, 숫자 칸은 자리 폭이 같은 숫자로 씁니다. 고른 줄은 연한 파랑과 굵은 글자입니다.</p>
+  <div class="demo"><div class="show col">
+    <table class="tbl"><tr><th>관서</th><th>기온</th><th>강수</th><th>특보</th></tr>
+      <tr class="on"><td>청주동부</td><td class="num">3.3°</td><td class="num">0mm</td><td>—</td></tr>
+      <tr><td>청주서부</td><td class="num">2.3°</td><td class="num">0mm</td><td>—</td></tr>
+      <tr><td>충주</td><td class="num">2.2°</td><td class="num">0mm</td><td><span class="tag caution">주의보</span></td></tr>
+    </table>
+  </div></div>
+
+  <h2 id="modal">팝업</h2>
+  <p>제목 줄 하나에 제목 · 단추 · 닫기를 모읍니다. 단추를 내용 아래에 따로 두지 않습니다. 닫기는 ✕ · 바깥 누르기 · Esc 세 가지 모두 됩니다.</p>
+  <div class="demo"><div class="show">
+    <div class="modal" style="width:min(520px,100%)"><div class="mh"><h3>미호강 · 청주 오송</h3><div class="btns"><button class="btn" type="button">CCTV</button><button class="ib" type="button" aria-label="닫기">✕</button></div></div>
+      <div class="body">24시간 수위 추이와 홍수위험 단계를 보여 줍니다.</div></div>
+  </div></div>
+
+  <h2 id="empty">빈 상태</h2>
+  <p>자료가 없을 때도 칸을 비워 두지 않습니다. 왜 없는지 한 줄로 적습니다.</p>
+  <div class="demo"><div class="show col">
+    <div class="card"><div class="ch"><h3>재난문자 · 관할 시군</h3><span>0건</span></div><div class="empty">발령된 재난문자 없음</div></div>
+  </div></div>
+</main>
+<footer>cosmicpado 디자인 시스템 · 충북소방 업무 화면이 함께 쓰는 규칙</footer>
+</body>
+</html>

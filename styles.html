@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>스타일 · cosmicpado 디자인 시스템</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🚒%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="fonts/pretendard.css">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="site.css">
+<script src="site.js"></script>
+</head>
+<body>
+<main>
+  <h1>스타일</h1>
+  <p class="lead">모든 화면의 바탕이 되는 규칙입니다. 값은 <code>tokens.css</code>에 이름표로 들어 있습니다.</p>
+  <nav class="toc" aria-label="이 쪽 차례">
+    <a href="#color">색</a><a href="#status">상태색</a><a href="#wall">벽 화면 색</a><a href="#type">글자</a>
+    <a href="#space">간격</a><a href="#radius">선과 모서리</a><a href="#focus">초점</a><a href="#motion">움직임</a><a href="#words">문구</a>
+  </nav>
+
+  <h2 id="color">색</h2>
+  <p>바탕은 옅은 회청색, 카드는 흰색입니다. 글자는 세 단계만 씁니다. 파랑(brand)은 '고른 것 · 링크 · 주요 단추' 한 가지 뜻으로만 씁니다.</p>
+  <div class="sw">
+    <div><i style="background:var(--bg)"></i><p><b>바탕</b><span>--bg</span></p></div>
+    <div><i style="background:var(--card)"></i><p><b>카드</b><span>--card</span></p></div>
+    <div><i style="background:var(--soft)"></i><p><b>작은 칸</b><span>--soft</span></p></div>
+    <div><i style="background:var(--line)"></i><p><b>가는 선</b><span>--line</span></p></div>
+    <div><i style="background:var(--ink)"></i><p><b>본문 글자</b><span>--ink</span></p></div>
+    <div><i style="background:var(--ink2)"></i><p><b>덜 중요한 글자</b><span>--ink2</span></p></div>
+    <div><i style="background:var(--ink3)"></i><p><b>보조 글자</b><span>--ink3</span><em>이보다 옅게 쓰지 않음</em></p></div>
+    <div><i style="background:var(--brand)"></i><p><b>파랑</b><span>--brand</span><em>고른 것 · 링크</em></p></div>
+  </div>
+
+  <h2 id="status">상태색</h2>
+  <p>재대본 비상단계와 같은 순서로 다섯 가지입니다. 특보·하천·산불·미세먼지 모두 이 순서를 따릅니다. 밝은 화면에서도 흰 바탕 글자 대비가 4.5:1 이상이라 글자에 그대로 써도 됩니다.</p>
+  <table class="scale">
+    <tr><th>단계</th><th>이름표</th><th>글자</th><th>흰 바탕 대비</th><th>쓰는 곳</th></tr>
+    <tr><td>평상</td><td><span class="tag ok">평상</span></td><td style="color:var(--ok);font-weight:800">모두 정상</td><td>4.92 : 1</td><td>특보 없음 · 하천 정상 · 미세먼지 좋음</td></tr>
+    <tr><td>준비</td><td><span class="tag ready">준비</span></td><td style="color:var(--blue);font-weight:800">예비특보</td><td>5.17 : 1</td><td>예비특보 · 하천 관심</td></tr>
+    <tr><td>주의</td><td><span class="tag caution">주의</span></td><td style="color:var(--amb);font-weight:800">주의보</td><td>5.39 : 1</td><td>주의보 · 하천 주의 · 건조주의보 기준</td></tr>
+    <tr><td>경계</td><td><span class="tag alert">경계</span></td><td style="color:var(--warn);font-weight:800">경보</td><td>5.43 : 1</td><td>경보 · 하천 경계 · 산불 다소높음</td></tr>
+    <tr><td>심각</td><td><span class="tag severe">심각</span></td><td style="color:var(--sev);font-weight:800">위험</td><td>4.83 : 1</td><td>중대 경보 · 하천 심각 · 건조경보 기준</td></tr>
+  </table>
+  <ul class="rules">
+    <li class="do">단계는 <b>색 + 글자</b>로 함께 보입니다. 색을 못 보는 사람도 글자로 압니다.</li>
+    <li class="dont">상태색을 꾸밈으로 쓰지 않습니다. 빨강은 언제나 '위험'입니다.</li>
+    <li class="dont">밝은 화면에서 #e0930a 같은 밝은 노랑을 글자에 쓰지 않습니다(대비 2.5:1). 동그라미·막대·바탕처럼 글자가 아닌 곳에는 그림용 밝은 색(<code>--amb-fill</code> · <code>--warn-fill</code>)을 씁니다. 그림은 대비 3:1이면 되고, 진한 글자색을 그림에 쓰면 탁해 보입니다.</li>
+  </ul>
+
+  <h2 id="wall">벽 화면 색</h2>
+  <p>119종합상황실 상황판은 늘 어두운 화면입니다. 멀리서 보므로 강조는 청록 한 가지, 상태는 밝은 노랑·주황·빨강을 씁니다. <code>class="wall"</code> 안에서 쓰는 이름표입니다.</p>
+  <div class="sw wall" style="background:var(--bg);padding:10px;border-radius:14px">
+    <div><i style="background:var(--card)"></i><p><b>패널</b><span>#151b26</span></p></div>
+    <div><i style="background:var(--soft)"></i><p><b>칸</b><span>#1b2230</span></p></div>
+    <div><i style="background:var(--ink3)"></i><p><b>보조 글자</b><span>#8e9bb0</span></p></div>
+    <div><i style="background:var(--acc)"></i><p><b>강조 청록</b><span>#17afab</span></p></div>
+    <div><i style="background:var(--c-amber)"></i><p><b>주의</b><span>#ffb020</span></p></div>
+    <div><i style="background:var(--c-orange)"></i><p><b>경계</b><span>#ff9a3c</span></p></div>
+    <div><i style="background:var(--c-red)"></i><p><b>심각</b><span>#ff5a5a</span></p></div>
+    <div><i style="background:var(--c-blue)"></i><p><b>비 · 물</b><span>#54aaff</span></p></div>
+  </div>
+
+  <h2 id="type">글자</h2>
+  <p>글꼴은 <b>Pretendard</b> 하나입니다. 굵기는 보통(400) · 굵게(700) · 아주 굵게(800) 세 가지만 씁니다. 숫자가 줄지어 나오는 곳(표 · 시각)은 자리 폭이 같은 숫자(tabular-nums)로 씁니다.</p>
+  <table class="scale">
+    <tr><th>이름</th><th>보기</th><th>크기 · 굵기</th><th>쓰는 곳</th></tr>
+    <tr><td>큰 숫자</td><td style="font-size:34px;font-weight:800;letter-spacing:-.02em">15.7<small style="font-size:16px;color:var(--ink3)">°C</small></td><td>34px · 800</td><td>현재 기온</td></tr>
+    <tr><td>측정값</td><td style="font-size:22px;font-weight:800">4.3<small style="font-size:13.5px;color:var(--ink3)">m/s</small></td><td>22px · 800</td><td>측정 칸 숫자</td></tr>
+    <tr><td>상태 글자</td><td style="font-size:18px;font-weight:800;color:var(--ok)">모두 정상</td><td>18px · 800</td><td>요약 카드</td></tr>
+    <tr><td>팝업 제목</td><td style="font-size:17px;font-weight:800">청주동부 현재 실황</td><td>17px · 800</td><td>팝업 · 윗줄 이름</td></tr>
+    <tr><td>카드 제목</td><td style="font-size:15px;font-weight:800">시간대별 예보 · 12시간</td><td>15px · 800</td><td>카드 제목 줄</td></tr>
+    <tr><td>본문</td><td style="font-size:15px">보내 주신 의견은 개발 담당자가 확인합니다.</td><td>15px · 400</td><td>설명 · 표</td></tr>
+    <tr><td>보조</td><td style="font-size:13.5px;color:var(--ink3)">14:38 관측 · 청주금천 관측소</td><td>13.5px · 400~700</td><td>시각 · 단위 · 출처</td></tr>
+    <tr><td>가장 작은 글자</td><td style="font-size:13px;color:var(--ink3);font-weight:700">🌊 관할 하천</td><td>13px</td><td>이보다 작게 쓰지 않음</td></tr>
+  </table>
+  <ul class="rules">
+    <li class="dont">13px보다 작은 글자를 쓰지 않습니다. 자리가 모자라면 글자를 줄이지 말고 내용을 줄입니다.</li>
+    <li class="do">단위(%, m/s, mm)는 숫자보다 작고 옅게 붙입니다. 숫자가 먼저 읽힙니다.</li>
+  </ul>
+
+  <h2 id="space">간격</h2>
+  <p>간격은 4의 배수를 씁니다. 카드 안쪽 여백은 16px, 카드 사이는 12~14px, 작은 칸 사이는 8px입니다.</p>
+  <div class="demo"><div class="show">
+    <div style="display:flex;gap:16px;align-items:flex-end">
+      <div style="text-align:center"><div style="width:4px;height:4px;background:var(--brand);margin:0 auto 6px"></div><small style="font-size:13px">4</small></div>
+      <div style="text-align:center"><div style="width:8px;height:8px;background:var(--brand);margin:0 auto 6px"></div><small style="font-size:13px">8 · 작은 칸 사이</small></div>
+      <div style="text-align:center"><div style="width:12px;height:12px;background:var(--brand);margin:0 auto 6px"></div><small style="font-size:13px">12 · 카드 사이</small></div>
+      <div style="text-align:center"><div style="width:16px;height:16px;background:var(--brand);margin:0 auto 6px"></div><small style="font-size:13px">16 · 카드 안쪽</small></div>
+      <div style="text-align:center"><div style="width:24px;height:24px;background:var(--brand);margin:0 auto 6px"></div><small style="font-size:13px">24 · 큰 묶음</small></div>
+    </div>
+  </div></div>
+
+  <h2 id="radius">선과 모서리</h2>
+  <p>선은 1px 가는 선 하나입니다. 모서리는 크기에 따라 네 가지이고, 그림자는 펼친 목록 · 팝업처럼 떠 있는 것에만 씁니다.</p>
+  <div class="demo"><div class="show">
+    <div style="width:110px;height:70px;background:var(--card);border:1px solid var(--line);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:13.5px">카드 14</div>
+    <div style="width:110px;height:70px;background:var(--card);border:1px solid var(--line);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:13.5px">요약 카드 12</div>
+    <div style="width:110px;height:70px;background:var(--card);border:1px solid var(--line);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:13.5px">칸 · 단추 10</div>
+    <div style="width:110px;height:70px;background:var(--card);border:1px solid var(--line);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13.5px">이름표 8</div>
+    <div style="width:110px;height:70px;background:var(--card);border:1px solid var(--line2);border-radius:12px;box-shadow:var(--shadow-pop);display:flex;align-items:center;justify-content:center;font-size:13.5px">떠 있는 것</div>
+  </div></div>
+  <ul class="rules">
+    <li class="dont">카드 · 팝업 · 알림에 <b>왼쪽 색 띠</b>(border-left)를 붙이지 않습니다. 연한 바탕색과 제목 색으로 구분합니다.</li>
+  </ul>
+  <div class="demo"><div class="show">
+    <div class="al" style="min-width:260px"><b>호우주의보</b><p>청주 · 증평 · 진천 — 11.26 14:00 발효</p></div>
+    <div style="min-width:260px;background:var(--card);border:1px solid var(--line);border-left:5px solid var(--warn);border-radius:10px;padding:9px 12px;opacity:.55"><b style="font-size:14px">✗ 이렇게 하지 않기</b><p style="margin:2px 0 0;font-size:13.5px;color:var(--ink2)">왼쪽 색 띠</p></div>
+  </div></div>
+
+  <h2 id="focus">초점 · 키보드</h2>
+  <p>마우스 없이 Tab으로 옮겨 다니며 Enter · 스페이스로 누를 수 있어야 합니다. 키보드로 옮겨 왔을 때만 파란 테두리(3px)가 보이고, 마우스로 누를 때는 보이지 않습니다. Tab을 눌러 아래 단추로 와 보세요.</p>
+  <div class="demo"><div class="show">
+    <button class="btn" type="button">새로고침</button>
+    <button class="btn pri" type="button">저장</button>
+    <div class="ref" tabindex="0" role="button" style="min-width:200px"><h4>💧 충북 영향 댐</h4><b style="color:var(--ok)">모두 정상</b></div>
+  </div><pre>&lt;!-- div 를 누르게 만들 땐 tabindex 와 role 을 함께 --&gt;
+&lt;div class="ref" tabindex="0" role="button"&gt;…&lt;/div&gt;</pre></div>
+
+  <h2 id="motion">움직임</h2>
+  <ul class="rules">
+    <li class="do">상태가 바뀔 때만 0.15초로 부드럽게 바꿉니다.</li>
+    <li class="do">계속 깜빡이는 것은 'LIVE' 표시와 지금 단계 점 하나만 씁니다.</li>
+    <li class="do">컴퓨터의 '움직임 줄이기' 설정을 켠 사람에게는 움직임을 끕니다.</li>
+  </ul>
+
+  <h2 id="words">문구</h2>
+  <ul class="rules">
+    <li class="do"><b>~합니다 · ~입니다</b>로 짧게 씁니다. 한 문장에 한 가지만 말합니다.</li>
+    <li class="do">외래어 · 전문어 대신 쉬운 말: 로딩 → 불러오는 중, 임계치 → 기준, 디폴트 → 기본, 업데이트 → 새로 받기.</li>
+    <li class="do">자료가 없으면 빈칸 대신 이유를 적습니다: '관측소 없음', '15분 넘게 갱신 안 됨'.</li>
+    <li class="do">숫자에는 언제 · 어디 값인지 붙입니다: '14:38 관측 · 청주금천 관측소'.</li>
+    <li class="dont">'~하시겠습니까?'처럼 묻는 말을 단추 이름으로 쓰지 않습니다. 단추는 하는 일을 적습니다: '저장', '닫기'.</li>
+  </ul>
+</main>
+<footer>cosmicpado 디자인 시스템 · 충북소방 업무 화면이 함께 쓰는 규칙</footer>
+</body>
+</html>

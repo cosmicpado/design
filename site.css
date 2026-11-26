@@ -1,0 +1,75 @@
+/* 이 문서 사이트의 틀 — 윗줄 · 본문 폭 · 절 제목 · 예시 상자 */
+html { scrollbar-gutter: stable; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.65 var(--font); -webkit-font-smoothing: antialiased; }
+a { color: var(--brand); }
+* { box-sizing: border-box; }
+
+/* 윗줄 */
+.top { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--card) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.top .in { max-width: 1040px; margin: 0 auto; padding: 10px 20px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.logo { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font-weight: 800; font-size: 16px; white-space: nowrap; }
+.logo i { width: 32px; height: 32px; border-radius: 9px; background: linear-gradient(140deg, #3b82f6, #1d4ed8); display: inline-flex; align-items: center; justify-content: center; color: #fff; font-style: normal; font-size: 17px; }
+.top nav { display: flex; gap: 2px; margin-left: 8px; }
+.top nav a { padding: 6px 12px; border-radius: 8px; color: var(--ink2); text-decoration: none; font-weight: 700; font-size: 14.5px; }
+.top nav a:hover { background: var(--soft); }
+.top nav a.on { color: var(--brand); background: color-mix(in srgb, var(--brand) 9%, var(--card)); font-weight: 800; }
+.top .seg { margin-left: auto; }
+
+/* 본문 */
+main { max-width: 1040px; margin: 0 auto; padding: 28px 20px 80px; }
+h1 { font-size: 30px; font-weight: 800; letter-spacing: -.02em; margin: 6px 0 8px; }
+.lead { font-size: 16.5px; color: var(--ink2); margin: 0 0 28px; max-width: 46rem; }
+h2 { font-size: 22px; font-weight: 800; letter-spacing: -.01em; margin: 48px 0 6px; padding-top: 8px; scroll-margin-top: 70px; }
+h2 + p, .note { color: var(--ink2); margin: 0 0 16px; max-width: 46rem; }
+h3.sub { font-size: 16px; font-weight: 800; margin: 24px 0 8px; }
+.toc { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 8px; }
+.toc a { font-size: 13.5px; font-weight: 700; color: var(--ink2); text-decoration: none; border: 1px solid var(--line); background: var(--card); border-radius: 999px; padding: 4px 12px; }
+.toc a:hover { border-color: var(--line2); }
+
+/* 예시 상자 — 위는 실제 모양, 아래는 쓰는 법 */
+.demo { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-card); overflow: hidden; margin: 10px 0 18px; }
+.demo .show { padding: 20px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; background: var(--card); }
+.demo .show.col { flex-direction: column; align-items: stretch; }
+.demo pre { margin: 0; padding: 12px 16px; border-top: 1px solid var(--line); font: 13.5px/1.6 Consolas, 'D2Coding', monospace; color: var(--ink2); overflow-x: auto; white-space: pre; }
+code { font: 13.5px Consolas, 'D2Coding', monospace; background: var(--soft); border: 1px solid var(--line); border-radius: 5px; padding: 0 5px; }
+
+/* 규칙 목록 — ✓ 이렇게 / ✗ 이렇게 하지 않기 */
+.rules { list-style: none; padding: 0; margin: 8px 0 16px; display: grid; gap: 6px; max-width: 46rem; }
+.rules li { padding-left: 26px; position: relative; color: var(--ink2); }
+.rules li::before { position: absolute; left: 0; top: 0; font-weight: 800; }
+.rules li.do::before { content: "✓"; color: var(--ok); }
+.rules li.dont::before { content: "✗"; color: var(--sev); }
+.rules b { color: var(--ink); }
+
+/* 색 견본 */
+.sw { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin: 10px 0 18px; }
+.sw div { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-box); overflow: hidden; }
+.sw i { display: block; height: 54px; border-bottom: 1px solid var(--line); }
+.sw p { margin: 0; padding: 8px 10px; font-size: 13.5px; line-height: 1.45; }
+.sw p b { display: block; color: var(--ink); }
+.sw p span { color: var(--ink3); font-family: Consolas, monospace; }
+.sw p em { font-style: normal; color: var(--ink3); }
+
+/* 글자 크기 표 · 일반 표 */
+.scale { width: 100%; border-collapse: collapse; margin: 8px 0 18px; background: var(--card); border: 1px solid var(--line); border-radius: var(--r-card); overflow: hidden; }
+.scale td, .scale th { padding: 10px 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: middle; }
+.scale th { font-size: 13.5px; color: var(--ink3); font-weight: 700; background: var(--soft); }
+.scale tr:last-child td { border-bottom: 0; }
+.scale td:first-child { white-space: nowrap; }
+
+/* 홈 카드 묶음 */
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 18px 0; }
+.grid3 a { text-decoration: none; color: inherit; }
+.grid3 .card { padding: 18px; height: 100%; transition: border-color var(--ease); }
+.grid3 .card:hover { border-color: var(--line2); }
+.grid3 h3 { margin: 0 0 6px; font-size: 18px; font-weight: 800; }
+.grid3 p { margin: 0; color: var(--ink2); font-size: 14.5px; }
+
+footer { max-width: 1040px; margin: 0 auto; padding: 24px 20px 40px; color: var(--ink3); font-size: 13.5px; border-top: 1px solid var(--line); }
+
+@media (max-width: 760px) {
+  .grid3 { grid-template-columns: 1fr; }
+  .top nav { margin-left: 0; order: 3; width: 100%; }
+  h1 { font-size: 26px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }

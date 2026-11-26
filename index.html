@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>cosmicpado 디자인 시스템</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🚒%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="fonts/pretendard.css">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="site.css">
+<script src="site.js"></script>
+</head>
+<body>
+<main>
+  <h1>cosmicpado 디자인 시스템</h1>
+  <p class="lead">cosmicpado가 만드는 업무 화면 — 충북소방 기상정보통합플랫폼, 모닝브리핑 등 — 이 함께 쓰는 디자인 규칙입니다.
+    새 화면을 만들 때 여기 있는 색·글자·부품을 그대로 가져다 쓰면, 따로 만들어도 한 시스템처럼 보입니다.</p>
+
+  <div class="grid3">
+    <a href="styles.html"><div class="card"><h3>스타일</h3><p>색, 글자, 간격, 모서리, 초점, 움직임, 문구 — 모든 화면의 바탕 규칙</p></div></a>
+    <a href="components.html"><div class="card"><h3>컴포넌트</h3><p>카드, 단추, 탭, 요약 카드, 측정 칸, 알림 줄, 상태 띠, 표, 팝업</p></div></a>
+    <a href="patterns.html"><div class="card"><h3>패턴</h3><p>현재 실황, 단계 표시, 자료 시각, 화면 역할(종합 · 상황실)처럼 부품을 엮는 법</p></div></a>
+  </div>
+
+  <h2>둘러보기</h2>
+  <p>플랫폼에서 실제로 쓰는 모양입니다. 오른쪽 위 <b>밝게 · 어둡게</b>를 바꿔 보세요.</p>
+  <div class="demo"><div class="show col">
+    <div class="band caution"><i class="st" aria-hidden="true"></i><div><b>주의 · 재대본 비상 1단계</b><br><span>호우주의보 3개 시·군 — 청주 · 증평 · 진천</span></div></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+      <div class="mc"><span>습도<i>실효 32%</i></span><b>41<small>%</small></b></div>
+      <div class="mc"><span>풍속<i>순간 9.5</i></span><b>4.3<small>m/s</small></b></div>
+      <div class="mc"><span>풍향</span><b>북서 ↘</b></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+      <div class="ref" tabindex="0" role="button"><h4>🌊 관할 하천</h4><b style="color:var(--ok)">모두 정상</b><p>수위가 가장 높은 곳<br>감천 청석굴교 · 경계수위의 40%</p></div>
+      <div class="ref" tabindex="0" role="button"><h4>🔥 산불 위험</h4><b style="color:var(--warn)">제천 다소높음</b><p>충북 높음(제천) · 다소높음(9곳) · 낮음(단양)</p></div>
+      <div class="ref" tabindex="0" role="button"><h4>😷 미세먼지 PM10</h4><b style="color:var(--ok)">청주동부 29㎍/㎥ · 좋음</b><p>충북 시군 모두 좋음·보통</p></div>
+    </div>
+  </div></div>
+
+  <h2>여섯 가지 원칙</h2>
+  <ul class="rules">
+    <li class="do"><b>읽히는 게 먼저입니다.</b> 화면 글자는 13px 이상, 보조 글자도 #5f6d85보다 옅게 쓰지 않습니다.</li>
+    <li class="do"><b>상태는 색과 글자로 함께 말합니다.</b> '주의'를 노랑으로만 칠하지 않고 '주의'라고 적습니다.</li>
+    <li class="do"><b>구분은 바탕색과 제목색으로 합니다.</b> 카드·팝업에 왼쪽 색 띠를 붙이지 않습니다.</li>
+    <li class="do"><b>모두가 쓸 수 있게 만듭니다.</b> 글자 대비 4.5:1 이상, 키보드(Tab · Enter)로도 모든 칸을 누를 수 있게 합니다.</li>
+    <li class="do"><b>쉬운 우리말로 씁니다.</b> '로딩'보다 '불러오는 중', '임계치'보다 '기준'.</li>
+    <li class="do"><b>충북 기준으로 씁니다.</b> 관서 순서는 충청북도 · 청주동부 · 청주서부 · 충주 · 제천 · 보은 · 옥천 · 영동 · 증평 · 진천 · 괴산 · 음성 · 단양.</li>
+  </ul>
+
+  <h2>가져다 쓰기</h2>
+  <p>파일 두 개를 불러오면 됩니다. 글꼴은 <code>fonts/</code> 폴더째 함께 옮기면 인터넷이 막힌 PC에서도 모양이 같습니다.</p>
+  <div class="demo"><pre>&lt;link rel="stylesheet" href="fonts/pretendard.css"&gt;
+&lt;link rel="stylesheet" href="tokens.css"&gt;      &lt;!-- 색·글꼴·모서리 이름표 --&gt;
+&lt;link rel="stylesheet" href="components.css"&gt;  &lt;!-- 카드·단추 등 부품 모양 --&gt;
+
+&lt;html lang="ko" data-theme="dark"&gt;   &lt;!-- 어두운 화면. 빼면 밝은 화면 --&gt;</pre></div>
+</main>
+<footer>cosmicpado 디자인 시스템 · 값은 충북소방 기상정보통합플랫폼에서 옮겼습니다.</footer>
+</body>
+</html>

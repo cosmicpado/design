@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>패턴 · cosmicpado 디자인 시스템</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🚒%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="fonts/pretendard.css">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="site.css">
+<script src="site.js"></script>
+</head>
+<body>
+<main>
+  <h1>패턴</h1>
+  <p class="lead">부품을 엮어 자주 만드는 모양입니다. 새 화면을 만들 때 같은 상황이면 같은 모양을 씁니다.</p>
+  <nav class="toc" aria-label="이 쪽 차례">
+    <a href="#roles">화면 역할</a><a href="#now">현재 실황</a><a href="#level">단계 표시</a><a href="#group">여러 곳 요약</a>
+    <a href="#time">자료 시각</a><a href="#order">관서 순서</a><a href="#wall">벽 화면</a>
+  </nav>
+
+  <h2 id="roles">화면 역할</h2>
+  <p>같은 자료라도 누가 어디서 보느냐에 따라 화면을 나눕니다.</p>
+  <table class="scale">
+    <tr><th>화면</th><th>누가 · 어디서</th><th>모양</th></tr>
+    <tr><td><b>종합 현황</b></td><td>각 관서 직원 · 내 PC · 휴대폰</td><td>눌러서 자세히 보는 화면. 밝은 화면 기본, 카드 · 탭 · 팝업</td></tr>
+    <tr><td><b>재해별 집중 감시</b></td><td>호우 · 대설 · 산불 때 담당자</td><td>재해 한 가지를 깊게. 관서 비교 그래프 · 기준선</td></tr>
+    <tr><td><b>119종합상황실</b></td><td>상황실 벽 큰 화면</td><td>누르지 않고 멀리서 보는 화면. 늘 어둡고 글자가 크며, 관서가 저절로 돌아감</td></tr>
+  </table>
+
+  <h2 id="now">현재 실황</h2>
+  <p>큰 기온 하나 → 측정 칸 세 개 → 강수 한 줄 순서입니다. 함께 보면 좋은 값은 측정 칸 제목 줄 오른쪽에 작게 둡니다.</p>
+  <div class="demo"><div class="show">
+    <div class="card" style="width:min(460px,100%)"><div class="ch"><h3>청주동부 현재 실황</h3><span>14:38 관측</span></div>
+      <div class="body">
+        <div style="font-size:34px;font-weight:800;letter-spacing:-.02em;line-height:1.1">15.7<small style="font-size:16px;color:var(--ink3);font-weight:700">°C</small></div>
+        <div style="font-size:14px;color:var(--ink2);margin:2px 0 10px">☀ 맑음 · 체감 15°</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+          <div class="mc"><span>습도<i>실효 38%</i></span><b>38<small>%</small></b></div>
+          <div class="mc"><span>풍속<i>순간 8.5</i></span><b>3.4<small>m/s</small></b></div>
+          <div class="mc"><span>풍향</span><b>서남서</b></div>
+        </div>
+      </div></div>
+  </div></div>
+
+  <h2 id="level">단계 표시</h2>
+  <p>기준을 넘으면 <b>그 값만</b> 상태색으로 바꾸고, 평소에는 보조 글자색으로 둡니다. 모든 값이 늘 색을 띠면 정작 위험할 때 눈에 띄지 않습니다.</p>
+  <div class="demo"><div class="show">
+    <div class="mc" style="width:160px"><span>습도<i>실효 42%</i></span><b>49<small>%</small></b></div>
+    <div class="mc" style="width:160px"><span>습도<i style="color:var(--warn);font-weight:800">실효 32%</i></span><b>36<small>%</small></b></div>
+    <div class="mc" style="width:160px"><span>습도<i style="color:var(--sev);font-weight:800">실효 24%</i></span><b>28<small>%</small></b></div>
+  </div><pre>평소: 보조 글자 → 주의 기준(35% 이하): 주황 굵게 → 경보 기준(25% 이하): 빨강 굵게
+기준 숫자는 마우스를 올리면 보이게(title) 적어 둔다</pre></div>
+
+  <h2 id="group">여러 곳 요약</h2>
+  <p>시군 열한 곳을 하나씩 늘어놓지 않습니다. 단계별로 묶고, 세 곳 이하면 이름을, 많으면 곳 수를 적습니다.</p>
+  <ul class="rules">
+    <li class="do">충북 높음(제천) · 다소높음(9곳) · 낮음(단양)</li>
+    <li class="do">충북 11개 시군 모두 다소높음</li>
+    <li class="dont">청주 다소높음 · 충주 다소높음 · 제천 다소높음 · 보은 다소높음 · …</li>
+  </ul>
+
+  <h2 id="time">자료 시각</h2>
+  <p>모든 숫자에는 '언제 값인지'를 붙입니다. 자료가 늦으면 숨기지 않고 빨간 글자로 알립니다.</p>
+  <div class="demo"><div class="show col">
+    <div style="font-size:14.5px;color:var(--ink3)">자료 14:53 기준 · 약 5분 주기 갱신</div>
+    <div style="font-size:14.5px;color:var(--sev);font-weight:800">자료 14:53 기준 · ⚠ 21분째 갱신 안 됨</div>
+  </div><pre>15분 넘게 새 자료가 없으면 빨간 굵은 글자로 바꾼다</pre></div>
+
+  <h2 id="order">관서 순서</h2>
+  <p>목록 · 표 · 칩 · 순환 모두 같은 순서입니다. 값 크기순으로 정렬할 때만 예외입니다(예: 가장 메마른 곳부터).</p>
+  <div class="demo"><div class="show">
+    <span class="tag" style="background:var(--brand)">충청북도</span>
+    <span class="tag">청주동부</span><span class="tag">청주서부</span><span class="tag">충주</span><span class="tag">제천</span><span class="tag">보은</span><span class="tag">옥천</span>
+    <span class="tag">영동</span><span class="tag">증평</span><span class="tag">진천</span><span class="tag">괴산</span><span class="tag">음성</span><span class="tag">단양</span>
+  </div></div>
+
+  <h2 id="wall">벽 화면</h2>
+  <p>119종합상황실 상황판은 멀리서 봅니다. 글자를 크게, 칸을 적게, 색은 '평소 회색 → 이상할 때만 색'으로 씁니다. 누르는 칸이 있어도 누르지 않고 볼 수 있어야 합니다.</p>
+  <div class="demo"><div class="show wall" style="background:var(--bg)">
+    <div style="background:var(--card);border:2px solid var(--line);border-radius:20px;padding:18px 22px;min-width:260px;color:var(--ink)">
+      <div style="font-size:19px;color:var(--ink3)">풍속 <span style="float:right;color:var(--c-amber);font-weight:700">순간 10.4</span></div>
+      <div style="font-size:44px;font-weight:700;line-height:1.1">6.2<span style="font-size:22px;color:var(--ink3)"> m/s</span></div>
+    </div>
+    <div style="background:var(--card);border:2px solid var(--line);border-radius:20px;padding:18px 22px;min-width:200px;color:var(--ink)">
+      <div style="font-size:19px;color:var(--ink3)">산불위험</div>
+      <div style="font-size:44px;font-weight:700;line-height:1.1;color:var(--c-orange)">높음</div>
+    </div>
+  </div></div>
+</main>
+<footer>cosmicpado 디자인 시스템 · 충북소방 업무 화면이 함께 쓰는 규칙</footer>
+</body>
+</html>
