@@ -1,6 +1,6 @@
 # cosmicpado-design — 작업 안내
 
-cosmicpado 디자인 시스템 문서 사이트(GitHub cosmicpado/cosmicpado-design). 형제 프로젝트 `../cb-weather-dashboard`(충북소방 기상정보통합플랫폼)에서 실제로 쓰는 색·글자·부품을 정리했다. 구조는 README.md 참고.
+cosmicpado 디자인 시스템 문서 사이트(GitHub cosmicpado/design). 형제 프로젝트 `../cb-weather-dashboard`(충북소방 기상정보통합플랫폼)에서 실제로 쓰는 색·글자·부품을 정리했다. 구조는 README.md 참고.
 
 ## 지켜 줄 것
 - 대화와 중간 설명은 모두 한국어로 한다.
